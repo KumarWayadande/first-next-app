@@ -3,18 +3,14 @@
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import slugify from "slugify";
 
 export default function NavigationMenuDemo() {
   const [slug, setSlug] = useState("");
   const router = useRouter();
 
-  const handleChange = (e) => {
-    setSlug(e.target.value);
-  };
-  function handleClick() {
-    console.log(slug);
-    router.push(`/blog/${slug}`);
-  }
+  const handleChange = (e) => setSlug(e.target.value);
+  const handleClick = () => router.push(`/blog/${slugify(slug)}`);
 
   return (
     <div>
